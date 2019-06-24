@@ -1,0 +1,155 @@
+C:\_My\Workspace\zowe-smpe>grep -nir "ln \-s" *.*
+_new/zowe-install-api-mediation.sh:103:_cmd ln -s \
+_new/zowe-install-explorer-api.sh:69:_cmd ln -s \
+_new/zowe-install-misc.sh:127:_cmd ln -s \
+smpe-gimzip.sh:301:_cmd ln -s $1 $2
+
+
+
+if extattr ./zlux-app-server/bin/zssServer | grep "Program controlled = NO"; then
+  echo "zssServer does not have the proper extattr values"
+  echo "   Please run extattr +p $PWD/zlux-app-server/bin/zssServer"
+  exit 1
+fi
+
+
+
+zowe-xmem-apf.sh ${XMEM_LOADLIB}
+zowe-xmem-ppt.sh
+
+getJavaVersion() {
+    java_bin="$1/bin/java"
+    if [[ -x $java_bin ]]; then
+        version=$("$java_bin" -version 2>&1 | sed -n ';s/.* version "\(.*\)\.\(.*\)\..*"/\1\2/p;')
+        javaVersion=$version
+    else
+        javaVersion=-1
+    fi
+}
+
+
+C:\_My\Workspace\zowe-smpe\_delta\v12\zowe-api-mediation-configure.sh
+C:\_My\Workspace\zowe-smpe\_delta\v12\zowe-explorer-ui-configure.sh
+
+C:\_My\Workspace\zowe-smpe\_delta\v12\zowe-check-prereqs.sh
+C:\_My\Workspace\zowe-smpe\_delta\v12\zowe-init.sh
+C:\_My\Workspace\zowe-smpe\_delta\v12\zowe-verify.sh
+
+C:\_My\Workspace\zowe-smpe\_delta\v13\zowe-init.sh
+C:\_My\Workspace\zowe-smpe\_delta\v13\zowe-verify.sh
+
+<?xml version=\"1.0\"?>
+<ISPF-INPUT>
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+xsi:noNamespaceSchemaLocation=\"ispf.xsd\">
+<SERVICE-REQUEST>
+<service>TSO</service>
+<session>NONE</session>
+<command>LISTC ENT('SYS1.LINKLIB')</command>
+</SERVICE-REQUEST>
+</ISPF-INPUT>
+
+<?xml version="1.0"?>
+<ISPF-OUTPUT>
+ <SERVICE-REQUEST>
+<service>TSO</service>
+<session>NONE</session>
+<command>LISTC ENT('SYS1.LINKLIB')</command>
+ </SERVICE-REQUEST>
+ <SERVICE-RESPONSE>
+  <ISPF-COMMAND>
+
+  </ISPF-COMMAND>
+  <![CDATA[
+   NONVSAM ------- SYS1.LINKLIB
+        IN-CAT --- CATALOG.MASTER.SYSPLEXD
+   READY
+   END
+  ]]>
+  </TSO>
+ </SERVICE-RESPONSE>
+ <OPERATIONS-LOG>
+ <![CDATA[
+  Content-type: text/plain
+
+  Entering ISPZINT (Service initialization)
+  About to read from fileno(stdin) = 0
+  Data read from STDIN is TSO LISTC ENT('SYS1.LINKLIB')
+  EPOCH secs = 1202109526
+  Local Date & time: Mon Feb  4 02:18:46 2008
+  Hour: 2 Min: 18 Sec 46
+  Function ID timestamp = ID008326
+  Environment variables:
+  0 QUERY_STRING=
+  1 CONTENT_TYPE=application/x-www-form-urlencoded
+  2 PATH=/bin:.:/usr/sbin:/usr/lpp/internet/bin:/usr/lpp/internet/sbin:
+  /usr/lpp/products/java142/J1.4/bin/
+  3 AUTH_TYPE=Basic
+  4 DOCUMENT_URI=/ISPZXML
+  5 SHELL=/bin/sh
+  6 HTTPS=OFF
+  7 HTTP_ACCEPT=text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+  8 HTTP_USER_AGENT=Java1.3.1
+  9 SERVER_PORT=1726
+  10 RULE_FILE=//DD:CONF
+  11 GATEWAY_INTERFACE=CGI/1.1
+  12 PATH_INFO=
+  13 CONTENT_LENGTH=274
+  14 _CEE_RUNOPTS=ENVAR("_CEE_ENVFILE=//DD:ENV")
+  15 _BPX_SPAWN_SCRIPT=YES
+  16 REFERER_URL=
+  17 _=./ISPZINT
+  18 CLASSPATH=.:/usr/lpp/internet/server_root/CAServlet
+  19 STEPLIB=CURRENT
+  20 REQUEST_METHOD=POST
+  21 REMOTE_ADDR=9.190.236.239
+  22 LANG=C
+  23 LIBPATH=/bin:/usr/lpp/internet/bin:/usr/lpp/internet/sbin
+  24 REMOTE_USER=USERNME
+  25 SERVER_ADDR=192.168.123.11
+  26 FSCP=IBM-1047
+  27 PATH_TRANSLATED=
+  28 HTTP_CONNECTION=keep-alive
+  29 SERVER_TOKEN=1
+  30 HTTP_HOST=PTHISD1.AU.IBM.COM
+  31 _BPX_SHAREAS=YES
+  32 CGI_ISPCONF=/etc/ispf
+  33 SERVER_SOFTWARE=IBM HTTP Server/V5R3M0
+  34 REPORTBITS=77
+  35 DOCUMENT_ROOT=usr/lpp/ispf/bin
+  36 NETCP=ISO8859-1
+  37 CGI_ISPWORK=/var/ispf
+  38 COUNTERDIR=NULL
+  39 LC_ALL=en_US.IBM-1047
+  40 CGI_DTCONF=/etc/ispf
+  41 _BPX_USERID=USERNME
+  42 SERVER_PROTOCOL=HTTP/1.1
+  43 JAVA_HOME=/usr/lpp/products/java142/J1.4/
+  44 HTTPS_KEYSIZE=
+  45 TZ=EST5EDT
+  46 _CEE_ENVFILE=//DD:ENV
+  47 _BPX_BATCH_SPAWN=SPAWN
+  48 SCRIPT_NAME=/ISPZXML
+  49 NLSPATH=/usr/lib/nls/msg/%L/%N:/usr/lpp/internet/%L/%N:
+  /usr/lib/nls/msg/En_US.IBM-1047/%N
+  50 CGI_DTWORK=/var/ispf
+  51 DOCUMENT_NAME=usr/lpp/ispf/bin/ISPZXML
+  52 SERVER_NAME=PTHISD1.AU.IBM.COM
+  Number of environment variables is 53
+  Protocol = HTTP
+  FSCP = IBM-1047
+  NETCP = ISO8859-1
+  CGI_ISPCONF = /etc/ispf
+  CGI_ISPWORK = /var/ispf
+  CGI_TRANTABLE =
+  Server PATH = /bin:.:/usr/sbin:/usr/lpp/internet/bin:
+  /usr/lpp/internet/sbin:/usr/lpp/products/java142/J1.4/bin/
+  About to spawn task for ISPZTSO
+  Parameters passed to ISPZTSO - LISTC ENT('SYS1.LINKLIB')
+  Return code from ISPZTSO is 0
+  About to open /tmp/USERNME.ID008326.SYSTSPRT
+  *** XML-NOTE *** Reference tagged SERVICE-RESPONSE
+  OUT.84
+ ]]>
+ </OPERATIONS-LOG>
+<ISPF-OUTPUT>

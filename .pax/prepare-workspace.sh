@@ -13,7 +13,7 @@ set -x
 
 ################################################################################
 # Build script
-# 
+#
 # - build client
 # - import ui server dependency
 ################################################################################
@@ -60,12 +60,6 @@ cp -R scripts/* "${PAX_WORKSPACE_DIR}/ascii/zowe-${ZOWE_VERSION}/scripts"
 # write a version file, so pre-packaging.sh can pick up
 echo "$ZOWE_VERSION" > "${PAX_WORKSPACE_DIR}/ascii/version"
 
-# jobs-api-server-start.sh is already in IBM-1047 encoding, no need to put in ascii folder
-mkdir -p "${PAX_WORKSPACE_DIR}/content/zowe-${ZOWE_VERSION}/files/scripts"
-mv "${PAX_WORKSPACE_DIR}/ascii/zowe-${ZOWE_VERSION}/files/scripts/jobs-api-server-start.sh" \
-   "${PAX_WORKSPACE_DIR}/content/zowe-${ZOWE_VERSION}/files/scripts/jobs-api-server-start.sh"
-mv "${PAX_WORKSPACE_DIR}/ascii/zowe-${ZOWE_VERSION}/files/scripts/data-sets-api-server-start.sh" \
-   "${PAX_WORKSPACE_DIR}/content/zowe-${ZOWE_VERSION}/files/scripts/data-sets-api-server-start.sh"
-
 # debug purpose, list all files in workspace
+echo "[${SCRIPT_NAME}] content of ${PAX_WORKSPACE_DIR}...."
 find ./${PAX_WORKSPACE_DIR} -print
